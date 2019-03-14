@@ -24,15 +24,15 @@ def totals (budgetDataRow):
     average = 0
     average = sum(int(earningsTotalRow) / numberOfRowsinTotalEarningsColumn
 
-    print ("Financial Analysis: ")
-    print ("----")
-    print (f"Total Months: {len(numberOfRowsinMonthsColumn)}")
-    print (f"Total Earnings: {sum(numberOfRowsinTotalEarningsColumn)}")
-    print (f"Average Change: {str(average)}")
-    print (f"Greatest Increase in Profits: {max(numberOfRowsinTotalEarningsColumn)}")
-    print (f"Greatest Decrease in Profits: {min(numberOfRowsinTotalEarningsColumn)}")
+    #print ("Financial Analysis: ")
+    #print ("----")
+    #print (f"Total Months: {len(numberOfRowsinMonthsColumn)}")
+    #print (f"Total Earnings: {sum(numberOfRowsinTotalEarningsColumn)}")
+    #print (f"Average Change: {str(average)}")
+    #print (f"Greatest Increase in Profits: {max(numberOfRowsinTotalEarningsColumn)}")
+    #print (f"Greatest Decrease in Profits: {min(numberOfRowsinTotalEarningsColumn)}")
 
-with open(budgetdatacsv, 'r') as csvfile:
+with open (budgetdatacsv, 'r') as csvfile:
 
     # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -43,5 +43,6 @@ with open(budgetdatacsv, 'r') as csvfile:
             numberOfRowsinTotalEarningsColumn.append(float(budgetDataRow[1]))
         print totals (budgetDataRow)
 
-#Calculate average for budgetData in 0 for budget_data.csv. AverageChange in budgetData
-    #AverageChange = sum(int(totalearnings))/totalMonths
+# Alternative calculation for average budgetData in budget_data.csv.
+    # For AverageChange in budgetData:
+    #     AverageChange = sum(int(earningsTotalRow))/totalMonthsRow
