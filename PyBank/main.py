@@ -1,47 +1,49 @@
 import os
 import csv
 
-#Define file path
-budgetdatacsv = joinrealpath('budget_data.csv')
+budgetdatacsv = os.path.join('Python-Challenge', 'budget_data.csv')
+    
+# define the function and have it choose what to read from the csv file 
+def Stats (budgetData):
 
-#Read in the csvfile
-with open(budget_data, newline="") as csvfile:
-    #split the data on commas
+    # Total months is the sum of each row in the first column
+    total_months_row = (budgetData[0])
+    total_months_row = 0
+    # Total earnings adding totals in column 2
+    earningsTotalRow = int(budgetData[1])
+    earningsTotalRow = 0
+
+    if (earningsTotalRow < 0):
+        earningsTotalRow = totalloss
+    elif (earningsTotalRow >= 0): 
+        earningsTotalRow = totalprofit
+
+#Determine the number of rows in the months and earnings columns by counting from the first row
+    numberOfRowsinMonthsColumn += total_months_row
+    numberOfRowsinTotalEarningsColumn += earningsTotalRow
+
+#Determine the average overall earnings by dividing sum by the total amount of rows 
+    average = earningsTotalRow / numberOfRowsinTotalEarningsColumn
+    greatestincrease = max (earningsTotalRow) - min (earningsTotalRow)
+# open and read the csv file 
+#        
+with open(budgetdatacsv, 'r') as csvfile:
+# Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
+    
+    for budgetDataRow in budgetdatacsv:
+        Stats(budgetDataRow)   
 
-    def totals (budgetDataRow):
-        # find the months row
-        totalMonthsRow = int(budgetDataRow[0])
+    print ("Financial Analysis: ")    
+    print (f"Total Months: {numberOfRowsinMonthsColumn}")
+    print (f"Total Earnings: {numberOfRowsinTotalEarningsColumn}")
+    print (f"Average Change: {average}")
+    if (greatestincrease is totalprofit in earningsTotalRow):
+        print (f"Greatest Increase in Profits: {budgetDataRow[0], (greatestincrease)}")
+    elif (greatestincrease is totalloss in earningsTotalRow):
+        print (f"Greatest Decrease in Profits: {budgetDataRow[0], (greatestincrease)}")
 
-        # find the earnings row
-
-        earningsTotalRow = int(budgetDataRow[1])
-
-        #create a list to append values through the loop for each column
-
-        RowsinMonthsColumn = []
-        TotalEarningsColumn = []
-    #create the loop
-
-    for budgetDataRow in csvreader:
-        #append totalMonthsRow
-            RowsinMonthsColumn.append(totalMonthsRow),
-        #append earningsTotalRow, float to get only whole numbers
-            TotalEarningsColumn.append(float(earningsTotalRow)),
-        #Determine the average overall earnings by dividing sum by the total amount of rows
-            average = sum(int(TotalEarningsColumn) / RowsinMonthsColumn
-
-        print ("Financial Analysis: ")
-
-        print ("---------------------")
-
-        print (f"Total Months: {len(RowsinMonthsColumn)}")
-
-        print (f"Total Earnings: {sum(int(TotalEarningsColumn))}")
-
-        print (f"Average Change: {str(average)}")
-
-        print (f"Greatest Increase in Profits: {max(TotalEarningsColumn)}")
-
-        print (f"Greatest Decrease in Profits: {min(TotalEarningsColumn)}")
+#Print the results in an extracted .csv
+    with open(budgetdatacsv, 'w') as budgetdatacsvexported:
+        csvwriter = csv.writer (budgetdatacsvexported, delimiter=",")
