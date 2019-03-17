@@ -1,7 +1,7 @@
 import os
 import csv
 
-budgetdatacsv = os.path.join('Python-Challenge', 'budget_data.csv')
+budgetdatacsv = os.path.join('Python-Challenge', 'PyBank', 'budget_data.csv')
     
 # define the function and have it choose what to read from the csv file 
 def Stats (budgetData):
