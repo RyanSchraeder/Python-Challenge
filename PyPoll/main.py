@@ -2,7 +2,7 @@ import os
 import csv
 
 #Define file path
-electiondatafile = os.path.join('election_data.csv')
+electiondatafile = os.path.join('election_data_short.csv')
 
 def totals (voteDataRow):
             
