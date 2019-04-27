@@ -1,7 +1,7 @@
 import os
 import csv 
 
-electiondatafile = os.path.join('election_data_short.csv')
+electiondatafile = os.path.join('./Resources/election_data_short.csv')
 file_to_output = os.path.join('analysis.txt')
 
 total_votes_count = 0 
@@ -42,21 +42,26 @@ with open(file_to_output, "w") as txt_file:
 # Print the final vote count (to bash)
     election_results = (
         f"\n\nElection Results\n"
-        f"-------------------------\n"-
+        f"-------------------------\n"
         f"Total Votes: {total_votes_count}\n"
-        f"-------------------------\n")
+        f"-------------------------\n"
+        )
+
     print(election_results, end="")
     txt_file.write(election_results)
     
     for candidate in candidate_votes_dict: 
         candidate_vote = candidate_votes_dict.get(candidate)
-        print(candidate_vote)
+    #    print(candidate_vote)
         vote_pct = (candidate_vote / total_votes_count) * 100
 
         if candidate_vote > candidate_winner_vote_count:
             candidate_winner_vote_count = candidate_vote
             candidate_winner = candidate
-        
+            candidate = f"{candidate_winner} ({candidate_winner_vote_count})"
+            print(f"Winner: {candidate}")
+            print(f"-------------------")
+
         voter_output = f"{candidate}: {vote_pct:.3f}% ({candidate_vote})\n"
         print(voter_output, end="")
 
